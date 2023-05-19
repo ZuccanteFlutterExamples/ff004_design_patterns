@@ -1,4 +1,5 @@
 import 'my_list.dart';
+import 'singleton.dart';
 
 void main(List<String> args) {
   print("Hello world!");
@@ -32,4 +33,22 @@ void main(List<String> args) {
     print(i);
   }
   print('End');
+
+  List<Singleton> singletons = [
+    Singleton(),
+    Singleton(),
+    Singleton(),
+  ];
+
+  singletons[0].data = "Ciao";
+
+  for (Singleton s in singletons) {
+    print(s.data);
+  }
+
+  singletons.last.data = 'Hello world!';
+
+  for (Singleton s in singletons) {
+    print(s.data);
+  }
 }
