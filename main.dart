@@ -1,4 +1,5 @@
 import 'my_list.dart';
+import 'my_observable.dart';
 import 'singleton.dart';
 
 void main(List<String> args) {
@@ -27,6 +28,12 @@ void main(List<String> args) {
   for (int i in myList) {
     print(i);
   }
+  print('Iterator: ');
+  Iterator<int> iterator = myList.iterator;
+  while (iterator.moveNext()) {
+    print(iterator.current);
+  }
+
   myList.clear();
   print('-------------------------');
   for (int i in myList) {
@@ -51,4 +58,10 @@ void main(List<String> args) {
   for (Singleton s in singletons) {
     print(s.data);
   }
+
+  Observer bartender = Observer("Tyler");
+  CoffeeMaker mrCoffee = CoffeeMaker(List.from([bartender]));
+  Observer client = Observer("Kate");
+  mrCoffee.registerObserver(client);
+  mrCoffee.brew();
 }
